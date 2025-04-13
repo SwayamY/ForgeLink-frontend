@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - ForgeLink</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Sticky navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: #000000f2;
+    }
+
+    /* Sticky footer */
+    footer {
+      position: sticky;
+      bottom: 0;
+      padding: 10px 0;
+      background-color:  #000000f2;
+      text-align: center;
+      margin-top: 60px;
+      width: 100%;
+      color: #ced4da;
+    }
+
+    body {
+      padding-bottom: 0px; /* Space for sticky footer */
+      background-color: #f4f6f9;
+      font-family: 'Arial', sans-serif;
+    }
+
+    header {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      padding: 40px 0;
+      margin-bottom: 0px;
+      
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      margin-top: 30px;
+    }
+
+    .form-title {
+      font-size: 1.5rem;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 10px;
+      border: 1px solid #ced4da;
+      padding: 12px 20px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      transition: border-color 0.3s;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: #007bff;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+
+    .result-url {
+      font-weight: bold;
+      color: #28a745;
+      margin-top: 20px;
+    }
+
+    .result-url a {
+      color: #28a745;
+      text-decoration: none;
+    }
+
+    .result-url a:hover {
+      text-decoration: underline;
+    }
+
+    #short-url-container {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Header with the title and tagline -->
+  <header>
+    <h1>ForgeLink - Scalable URL Shortener</h1>
+    <p>Fast, Secure, and Cloud-Deployable URL Management System</p>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="intro.html">ForgeLink</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="urls.html">URLs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ddos.html">DDoS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="locust.html">Locust</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home/Landing Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="form-container">
+          <h4 class="form-title">Create a Short URL</h4>
+          <form id="shorten-form">
+            <div class="mb-3">
+              <label for="long-url" class="form-label">Enter Long URL</label>
+              <input type="url" class="form-control" id="long-url" placeholder="Enter your long URL" required>
+            </div>
+            <div class="mb-3">
+              <label for="short-url" class="form-label">Optional Short URL</label>
+              <input type="text" class="form-control" id="short-url" placeholder="Enter short URL (optional)">
+            </div>
+            <div class="mb-3">
+              <label for="expiry-days" class="form-label">Expiry Days</label>
+              <select class="form-select" id="expiry-days">
+                <option value="5">5 Days</option>
+                <option value="15">15 Days</option>
+                <option value="30" selected>30 Days</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Generate Short URL</button>
+          </form>
+          <!-- Container for the result URL, initially hidden -->
+          <div id="short-url-container">
+            <hr>
+            <div class="result-url" id="result-url"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Sweyam</p>
+    <p>
+      Contact: <a href="mailto:sweyam@example.com">sweyam@example.com</a> | 
+      LinkedIn: <a href="https://linkedin.com/in/sweyam" target="_blank">Sweyam</a> | 
+      Portfolio: <a href="https://sweyamportfolio.com" target="_blank">sweyamportfolio.com</a> | 
+      Phone: +91 123 456 7890
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('shorten-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const longUrl = document.getElementById('long-url').value;
+      const shortUrl = document.getElementById('short-url').value || null;
+      const expiryDays = document.getElementById('expiry-days').value;
+
+      const response = await fetch('http://localhost:8000/shorten/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          long_url: longUrl,
+          short_url: shortUrl,
+          expiry_days: expiryDays
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        document.getElementById('short-url-container').style.display = 'block';
+        document.getElementById('result-url').innerHTML = `
+          <strong>Short URL: </strong> 
+          <a href="http://localhost:8000/${data.short_url}" target="_blank">http://localhost:8000/${data.short_url}</a>
+        `;
+      } else {
+        document.getElementById('result-url').innerText = data.detail;
+      }
+    });
+  </script>
+</body>
+</html>
