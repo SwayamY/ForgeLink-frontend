@@ -175,9 +175,9 @@
     <p>&copy; 2025 Sweyam</p>
     <p>
       Contact: <a href="mailto:sweyam@example.com">sweyam@example.com</a> | 
-      LinkedIn: <a href="https://linkedin.com/in/sweyam" target="_blank">Sweyam</a> | 
+      LinkedIn: <a href="https://www.linkedin.com/in/swayam-yadav-50b741283/" target="_blank">Sweyam</a> | 
       Portfolio: <a href="https://sweyamportfolio.com" target="_blank">sweyamportfolio.com</a> | 
-      Phone: +91 123 456 7890
+      Phone: +91 9560275597
     </p>
   </footer>
 
@@ -191,7 +191,7 @@
       const shortUrl = document.getElementById('short-url').value || null;
       const expiryDays = document.getElementById('expiry-days').value;
 
-      const response = await fetch('http://localhost:8000/shorten/', {
+      const response = await fetch('http://34.57.221.164:8000/shorten/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -209,7 +209,7 @@
         document.getElementById('short-url-container').style.display = 'block';
         document.getElementById('result-url').innerHTML = `
           <strong>Short URL: </strong> 
-          <a href="http://localhost:8000/${data.short_url}" target="_blank">http://localhost:8000/${data.short_url}</a>
+          <a href="http://34.57.221.164:8000/${data.short_url}" target="_blank">http://34.57.221.164:8000/${data.short_url}</a>
         `;
       } else {
         document.getElementById('result-url').innerText = data.detail;

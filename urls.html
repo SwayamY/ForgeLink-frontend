@@ -161,7 +161,7 @@
     <p>&copy; 2025 Sweyam</p>
     <p>
       Contact: <a href="mailto:sweyam@example.com">sweyam@example.com</a> | 
-      LinkedIn: <a href="https://linkedin.com/in/sweyam" target="_blank">Sweyam</a> | 
+      LinkedIn: <a href="https://www.linkedin.com/in/swayam-yadav-50b741283/" target="_blank">Sweyam</a> | 
       Portfolio: <a href="https://sweyamportfolio.com" target="_blank">sweyamportfolio.com</a> | 
       Phone: +91 123 456 7890
     </p>
@@ -173,7 +173,7 @@
       const query = document.getElementById('searchInput').value.trim();
       if (!query) return;
 
-      fetch(`http://localhost:8000/search/?long_url=${encodeURIComponent(query)}`)
+      fetch(`http://34.57.221.164:8000/search/?long_url=${encodeURIComponent(query)}`)
         .then(res => res.json())
         .then(data => {
           const tableBody = document.getElementById('urlsTableBody');
@@ -193,7 +193,7 @@
           data.forEach(url => {
             const row = document.createElement('tr');
             row.innerHTML = `
-              <td><a href="http://localhost:8000/${url.short_url}" target="_blank">${url.short_url}</a></td>
+              <td><a href="http://34.57.221.164:8000/${url.short_url}" target="_blank">${url.short_url}</a></td>
               <td>${new Date(url.expires_at).toLocaleString()}</td>
               <td><button class="btn btn-danger btn-sm delete-btn" data-short-url="${url.short_url}">Delete</button></td>
             `;
@@ -214,7 +214,7 @@
     });
 
     function deleteShortUrl(shortUrl, button) {
-      fetch(`http://localhost:8000/${shortUrl}`, {
+      fetch(`http://34.57.221.164:8000/${shortUrl}`, {
         method: 'DELETE',
         headers: {
           'Accept': 'application/json'

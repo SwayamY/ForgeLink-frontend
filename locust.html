@@ -113,7 +113,7 @@
 
             const protectionMode = document.getElementById('protectionMode').value;
 
-            fetch('http://localhost:8000/set-mode', {
+            fetch('http://34.57.221.164:8000/set-mode', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ mode: protectionMode }),
@@ -123,7 +123,7 @@
                 if (data.message === "Mode updated successfully") {
                     // Show the iframe and countdown
                     document.getElementById('iframeContainer').style.display = 'block';
-                    document.getElementById('locustIframe').src = "http://localhost:8089";
+                    document.getElementById('locustIframe').src = "url-shortener-production-89d1.up.railway.app:8089";
 
                     // Start countdown
                     startCountdown();
