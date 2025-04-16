@@ -113,7 +113,7 @@
 
             const protectionMode = document.getElementById('protectionMode').value;
 
-            fetch('http://34.57.221.164:8000/set-mode', {
+            fetch('https://linkforge.duckdns.org/set-mode', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ mode: protectionMode }),

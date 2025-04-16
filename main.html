@@ -191,7 +191,7 @@
       const shortUrl = document.getElementById('short-url').value || null;
       const expiryDays = document.getElementById('expiry-days').value;
 
-      const response = await fetch('http://34.57.221.164:8000/shorten/', {
+      const response = await fetch('https://linkforge.duckdns.org/shorten/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -209,7 +209,7 @@
         document.getElementById('short-url-container').style.display = 'block';
         document.getElementById('result-url').innerHTML = `
           <strong>Short URL: </strong> 
-          <a href="http://34.57.221.164:8000/${data.short_url}" target="_blank">http://34.57.221.164:8000/${data.short_url}</a>
+          <a href="https://linkforge.duckdns.org/${data.short_url}" target="_blank">https://linkforge.duckdns.org/${data.short_url}</a>
         `;
       } else {
         document.getElementById('result-url').innerText = data.detail;
