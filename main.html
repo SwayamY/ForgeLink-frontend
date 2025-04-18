@@ -191,12 +191,12 @@
       const shortUrl = document.getElementById('short-url').value || null;
       const expiryDays = document.getElementById('expiry-days').value;
 
-      const response = await fetch('https://linkforge.duckdns.org/api/shorten/', {
+      const response = await fetch('https://linkforge.duckdns.org/shorten/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include',
+        
         body: JSON.stringify({
           long_url: longUrl,
           short_url: shortUrl,
