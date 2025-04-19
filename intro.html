@@ -94,17 +94,26 @@
     <div class="card p-4">
       <h4>1️⃣ What is ForgeLink?</h4>
       <p>
-        Unlike traditional CRUD-based link shorteners, <span class="highlight">ForgeLink</span> focuses on production-readiness. It’s an
-        <strong>asynchronous</strong>, <strong>Redis-integrated</strong>, <strong>containerized</strong> FastAPI service with real-world DDoS protection
-        mechanisms. <strong>Cloud-deployed</strong> and tested using Locust for load simulation.
-        <br><strong>NOT A CRUD OR TOY PROJECT BUT A DEVOPS PROJECT</strong>
+        <span class="highlight">ForgeLink</span> is a production-grade,<strong> Cloud Deployed</strong>, containerized system designed with a DevOps-first approach—far beyond basic CRUD applications.
+        It runs as a distributed stack comprising <strong>FastAPI</strong>, <strong>Redis</strong>, <strong>Postgres</strong>, and <strong>Locust</strong>, and includes a built-in DDoS simulator to validate protection strategies in real-world conditions.
       </p>
+      <p>
+        A minimal frontend enables on-demand <strong>load testing</strong> under different protection modes—demonstrating rate-limiting, IP blocking, and CAPTCHA mechanisms.
+        There is <strong>no dashboard or click-tracking</strong>; the goal is infrastructure resilience, not user analytics.
+      </p>
+      <p>
+        This cloud-deployed project emphasizes <strong>observability, scalability, and API robustness</strong>—an ideal showcase for backend engineering and DevOps internship roles.
+        <br><strong>This isn't just a CRUD APP OR URL SHORTENER TOY —it's a DevOps project .</strong>
+      </p>
+
     </div>
+    
 
     <div class="card p-4">
       <h4>2️⃣ Protection Design & Captcha Issue</h4>
       <p>
         Multiple protection modes are implemented:
+        
         <ul>
           <li>🔒 Rate Limiting</li>
           <li>🛑 IP Blocking</li>
@@ -125,12 +134,30 @@
     </div>
 
     <div class="card p-4">
-      <h4>4️⃣ Load Test Results (Automated)</h4>
+      <h4>4️⃣ Load Testing (Interactive + Pre-Tested)</h4>
       <p>
-        Each mode was tested under a <strong>2-minute load</strong> using Locust (cloud-deployed). Success/failure ratios were logged automatically.
+        ForgeLink includes a built-in <strong>Locust load testing interface</strong> (see Navbar) that allows recruiters to simulate traffic in real-time.
+        Load tests were also conducted locally using:
+        <code>docker-compose.override.low.yml</code> and <code>docker-compose.override.high.yml</code>.
       </p>
-      <canvas id="resultChart"></canvas>
+      <p>
+        ✅ Under the <strong>Low Resource Mode</strong> (<code>docker-compose.override.low.yml</code>), the system handled up to ~1000 users with 
+        <strong>&lt;1% failure</strong> across all protection modes.<br>
+        ⚠️ In the <strong>High User Load Test</strong> (~5000 users), even with <strong>High Resource Mode</strong> 
+        (<code>docker-compose.override.high.yml</code>), failures spiked close to <strong>100%</strong> around the 
+        <strong>5–10 minute mark</strong> due to resource saturation. However, failures began dropping over time 
+        as the system auto-recovered — showcasing the backend's stability under pressure.
+      </p>
+      
+      <p>
+        The stack runs on a <strong>GCP e2-medium VM</strong> (2 vCPUs, 4 GB RAM), simulating realistic cloud deployment conditions.
+        <br>
+        <em>No crashes or application-level errors occurred — only temporary response failures due to load, which is expected behavior on limited resources.</em>
+      </p>
     </div>
+    
+    
+    
 
     <div class="card p-4">
       <h4>5️⃣ Deployment Resource Modes</h4>
@@ -140,6 +167,7 @@
             <h5 class="text-center">🔽 Low Resource Mode</h5>
             <ul>
               <li>API: 0.25 CPU, 512MB RAM</li>
+              <li>Locust: 0.25 CPU, 256MB RAM</li>
               <li>DB: 0.25 CPU, 512MB RAM</li>
               <li>Redis: 0.20 CPU, 256MB RAM</li>
             </ul>
@@ -159,76 +187,79 @@
       </div>
     </div>
     <div class="card p-4">
-        <h4>🚀 Internship Portfolio Project</h4>
-        <p>
-          This project was developed as part of my internship portfolio to demonstrate practical expertise in
-          <strong>backend engineering, API, Docker ,Redis, and performance testing</strong>. It features robust implementations of
-          <span class="highlight">DDoS protection strategies, distributed load testing, and deployment readiness</span>.
-        </p>
-        <p>
-          I am actively seeking opportunities where I can contribute to impactful backend or systems-level engineering projects.
-          If you're hiring or would like to discuss collaboration, please feel free to reach out through the contact section in the footer below.
-        </p>
-        <p><strong>P.S.</strong> Clicking on <em>“ForgeLink”</em> in the navbar will bring you back to this page anytime.</p>
-      </div>
+      <h4>6️⃣ Deployment Architecture</h4>
+      <p>
+        The <strong>ForgeLink frontend</strong> is deployed on <strong>Netlify</strong> 🌐, ensuring fast global delivery through its optimized CDN.<br>
+        The <strong>backend</strong> runs on a <strong>GCP e2-medium VM</strong> (2 vCPUs, 4 GB RAM) 💻, offering scalable resources to handle production-level traffic.
+      </p>
+      <p>
+        To secure communication, the backend is wrapped with a subdomain via <strong>DuckDNS</strong> 🦆 (dynamic DNS). This was necessary due to free-tier domain restrictions, which don't allow <code>A</code> record editing.<br>
+        The <strong>SSL certificate</strong> from <strong>Let's Encrypt</strong> 🔒 enables HTTPS via an <strong>Nginx reverse proxy</strong> ⚙️, ensuring encrypted and reliable API communication.
+      </p>
+      <p>
+        The frontend interacts seamlessly with the backend through its 
+        <strong>
+          <a href="https://linkforge.duckdns.org/docs" target="_blank" rel="noopener noreferrer">
+            API endpoints
+          </a>
+        </strong> 🌐, with minimal client-side resources required, allowing smooth communication between both.<br>
+        This entire stack is designed to be robust and production-ready, demonstrating my ability to integrate cloud and security technologies in a real-world DevOps environment.
+      </p>
+    </div>
+    
+    <div class="card p-4">
+      <h4>🚀 Internship Portfolio Project</h4>
+      <p>
+        <strong>ForgeLink</strong> is a fully cloud-deployed system engineering project built to demonstrate my backend and DevOps skills in a real-world environment.
+        It features production-ready infrastructure and protection strategies against DDoS-style attacks.
+      </p>
+    
+      <p><strong>🔧 Tech Stack:</strong></p>
+      <ul>
+        <li>⚙️ <strong>FastAPI</strong> for backend API development</li>
+        <li>🐘 <strong>PostgreSQL</strong> for database persistence</li>
+        <li>🔥 <strong>Redis</strong> for real-time logging & analytics</li>
+        <li>🐳 <strong>Docker & Compose</strong> for multi-service orchestration</li>
+        <li>🧪 <strong>Locust</strong> for distributed load testing</li>
+        <li>☁️ <strong>GCP VM</strong> for deployment</li>
+      </ul>
+    
+      <p><strong>🌐 Deployment Highlights:</strong></p>
+      <ul>
+        <li>🔀 <strong>DuckDNS</strong> used for dynamic DNS routing to the GCP VM</li>
+        <li>🔐 <strong>Let's Encrypt</strong> SSL enabled via <strong>Certbot</strong> for HTTPS on the DuckDNS subdomain</li>
+        <li>⚙️ <strong>NGINX</strong> reverse proxy handles SSL termination and forwards traffic to FastAPI</li>
+        <li>☁️ Frontend hosted on <strong>Netlify</strong>, backend deployed on a <strong>GCP e2-medium VM</strong></li>
+      </ul>
+
+
+    
+      <p>
+        I’m open to backend or DevOps internship opportunities. Feel free to reach out using the contact section below if you’re hiring or up for collaboration!
+      </p>
+    
+      <p><strong>P.S.</strong> Clicking on <em>“ForgeLink”</em> in the navbar will always bring you back here.</p>
+    </div>
+    
+    
+    
+    
       
   </div>
 
   <footer>
     <p>&copy; 2025 Sweyam</p>
     <p>
-      Contact: <a href="mailto:sweyam@example.com">sweyam@example.com</a> | 
-      LinkedIn: <a href="https://www.linkedin.com/in/swayam-yadav-50b741283/" target="_blank">Sweyam</a> | 
-      Portfolio: <a href="https://sweyamportfolio.com" target="_blank">sweyamportfolio.com</a> | 
-      Phone: +91 123 456 7890
+      Contact: <a href="mailto:sweyam@example.com">swayam@example.com</a> | 
+      LinkedIn: <a href="https://www.linkedin.com/in/swayam-yadav-50b741283/" target="_blank">Swayam</a> | 
+      Portfolio: <a href="https://sweyamportfolio.com" target="_blank">swayamportfolio.com</a> | 
+      Phone: +91 9560275597
     </p>
   </footer>
 
   <script>
-    // Load Test Results Chart
-    const results = {
-      "None": { success: 100, failure: 0 },
-      "Rate Limit": { success: 90, failure: 10 },
-      "IP Block": { success: 95, failure: 5 },
-      "Captcha": { success: 80, failure: 20 },
-      "Rate Limit + Captcha": { success: 85, failure: 15 },
-      "Rate Limit + IP Block": { success: 92, failure: 8 },
-      "IP Block + Captcha": { success: 75, failure: 25 },
-      "Rate Limit + IP Block + Captcha": { success: 63, failure: 27 }
-    };
 
-    const ctx = document.getElementById('resultChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: Object.keys(results),
-        datasets: [
-          {
-            label: 'Success Rate (%)',
-            data: Object.values(results).map(r => r.success),
-            backgroundColor: 'rgba(75, 192, 192, 0.5)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-          },
-          {
-            label: 'Failure Rate (%)',
-            data: Object.values(results).map(r => r.failure),
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 100
-          }
-        }
-      }
-    });
+
 
     // Countdown Timer
     let timeLeft = 120;
