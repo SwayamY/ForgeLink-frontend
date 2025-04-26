@@ -1,5 +1,7 @@
 # 🔗 ForgeLink Frontend
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0d7204d7-ecd0-4869-80a8-3f5706736d10/deploy-status)](https://app.netlify.com/sites/forgelink/deploys)
+
 > 🚫 **Proprietary License** – Not open source.  
 > You may **not** clone, copy, mirror, modify, distribute, or otherwise use this code except for review in a hiring context.  
 > See [LICENSE](./LICENSE) for full terms.
